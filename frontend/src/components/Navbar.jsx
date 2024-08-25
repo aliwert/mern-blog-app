@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
-  const user = true;
+  const user = false;
 
   return (
     <div className="flex items-center justify-between px-5 md:px- [150px] py-3">
