@@ -12,7 +12,11 @@ const CreatePost = () => {
     setCategory("");
     setCategories(updatedCategories);
   };
-  const deleteCategory = () => {};
+  const deleteCategory = (k) => {
+    let updatedCategories = [...categories];
+    updatedCategories.splice(k, 1);
+    setCategories(updatedCategories);
+  };
 
   return (
     <div>
@@ -53,9 +57,9 @@ const CreatePost = () => {
                   key={k}
                   className="flex justify-center items-center space-x-3 mr-3 bg-sky-600 px-2 py-1 rounded-md mt-4 w-28"
                 >
-                  <p className="text-white">Tech</p>
+                  <p className="text-white">{c}</p>
                   <p
-                    onClick={deleteCategory}
+                    onClick={() => deleteCategory(k)}
                     className="text-white rounded-full cursor-pointer p-1"
                   >
                     <RxCross2 />
