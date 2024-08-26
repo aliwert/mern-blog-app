@@ -46,7 +46,7 @@ const CreatePost = () => {
               />
               <div
                 onClick={addCategory}
-                className="bg-slate-600 text-white px-3 py-2 font-bold cursor-pointer transition-all rounded-md shadow-xl sm:w-auto bg-gradient-to-r from-blue-600 to-blue-500 hover:bg-gradient-to-b dark:shadow-blue-900 shadow-blue-200 hover:shadow-2xl hover:shadow-blue-400 hover:-tranneutral-y-px"
+                className="bg-slate-600 text-white px-3 py-2 font-bold cursor-pointer transition-all rounded-md shadow-xl sm:w-auto bg-gradient-to-r from-blue-600 to-blue-500 hover:bg-gradient-to-b dark:shadow-blue-900 shadow-blue-200 hover:shadow-2xl hover:shadow-blue-400 hover:-translate-y-px"
               >
                 Add
               </div>
