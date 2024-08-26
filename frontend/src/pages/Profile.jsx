@@ -14,8 +14,8 @@ const Profile = () => {
           <ProfilePost />
         </aside>
 
-        <aside className=" md:w[35%] w-full md:items-end">
-          <div className="flex flex-col space-y-4 ">
+        <aside className=" md:w[35%] w-full md:items-end md:sticky md:top-10">
+          <div className="flex flex-col space-y-4">
             <h1 className="text-2xl font-bold text-sky-500 mb-4">Profile</h1>
             <input
               type="text"
