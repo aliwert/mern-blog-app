@@ -6,19 +6,22 @@ module.exports = {
   //list
   list: async (req, res) => {
     const data = await User.find();
-
+    const { password, ...info } = data._doc;
     res.status(200).json({
       success: true,
-      data: data,
+      data: info,
     });
   },
 
+  //read
   read: async (req, res) => {
     const data = await User.findOne({ _id: req.params.id });
 
+    const { password, ...info } = data._doc;
+
     res.status(200).json({
       success: true,
-      data: data,
+      data: info,
     });
   },
   //update
