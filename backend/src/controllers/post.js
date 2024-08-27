@@ -1,11 +1,11 @@
 "use strict";
-const User = require("../models/User.js");
+const Post = require("../models/Post.js");
 const bcrypt = require("bcryptjs");
 
 module.exports = {
   //list
   list: async (req, res) => {
-    const data = await User.find();
+    const data = await Post.find();
     res.status(200).json({
       success: true,
       data: data,
@@ -14,28 +14,22 @@ module.exports = {
 
   //read
   read: async (req, res) => {
-    const data = await User.findOne({ _id: req.params.id });
-
-    const { password, ...info } = data._doc;
+    const data = await Post.findOne({ _id: req.params.id });
 
     res.status(200).json({
       success: true,
-      data: info,
+      data: data,
     });
   },
   //update
   update: async (req, res) => {
     try {
-      if (req.body.password) {
-        const salt = await bcrypt.genSalt(10);
-        req.body.password = await bcrypt.hashSync(req.body.password, salt);
-      }
-      const updatedUser = await User.findByIdAndUpdate(
+      const updatedPost = await Post.findByIdAndUpdate(
         req.params.id,
         { $set: req.body },
         { new: true }
       );
-      res.status(200).json(updatedUser);
+      res.status(200).json(updatedPost);
     } catch (error) {
       res.status(500).json(error);
     }
@@ -44,8 +38,18 @@ module.exports = {
   //delete
   delete: async (req, res) => {
     try {
-      await User.findByIdAndDelete(req.params.id);
-      res.status(200).json("User has been deleted!!!");
+      await Post.findByIdAndDelete(req.params.id);
+      res.status(200).json("Post has been deleted!!!");
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
+  //create
+  create: async (req, res) => {
+    const newPost = new Post(req.body);
+    try {
+      const savedPost = await newPost.save();
+      res.status(200).json(savedPost);
     } catch (error) {
       res.status(500).json(error);
     }
