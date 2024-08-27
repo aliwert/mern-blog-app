@@ -3,6 +3,16 @@ const User = require("../models/User.js");
 const bcrypt = require("bcryptjs");
 
 module.exports = {
+  //list
+  list: async (req, res) => {
+    const data = await User.find();
+
+    res.status(200).json({
+      success: true,
+      data: data,
+    });
+  },
+
   //update
   update: async (req, res) => {
     try {
@@ -20,6 +30,8 @@ module.exports = {
       res.status(500).json(error);
     }
   },
+
+  //delete
   delete: async (req, res) => {
     try {
       await User.findByIdAndDelete(req.params.id);
