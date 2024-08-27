@@ -5,6 +5,6 @@ const router = require("express").Router();
 
 const user = require("../controllers/user.js");
 
-router.route("/:id").put(user.update);
+router.route("/:id").put(user.update).delete(user.delete);
 
 module.exports = router;
