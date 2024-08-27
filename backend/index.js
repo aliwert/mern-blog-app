@@ -3,9 +3,9 @@
 /* ------------------------------------------------------- */
 
 require("dotenv").config();
-
 const express = require("express");
 const app = express();
+const auhtRoute = require("./src/routes/auth.js");
 
 // envVariables to process.env:
 const PORT = process.env?.PORT || 5000;
@@ -17,6 +17,9 @@ dbConnection();
 
 // Accept JSON:
 app.use(express.json());
+
+//MWS
+app.use("/api/auth", auhtRoute);
 
 // RUN SERVER:
 app.listen(PORT, () => console.log(`http://${HOST}:${PORT}`));
