@@ -26,8 +26,6 @@ router.post("/signup", async (req, res) => {
 });
 
 /* --------------------------------------------------------------*/
-
-/* --------------------------------------------------------------*/
 //Login
 
 router.post("/login", async (req, res) => {
@@ -41,12 +39,28 @@ router.post("/login", async (req, res) => {
     if (!validPassword) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
-    res.status(200).json({ user });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+    const { passowrd, ...others } = user._doc;
+    res.cookie("token", token).status(200).json(others);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
 /* --------------------------------------------------------------*/
+//Logout
+
+router.get("/logout", (req, res) => {
+  try {
+    res
+      .clearCookie("token", { sameSite: "none", secure: true })
+      .status(200)
+      .json("Logged out successfully");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 module.exports = router;
