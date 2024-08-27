@@ -10,6 +10,8 @@ const jwt = require("jsonwebtoken");
 router.post("/signup", async (req, res) => {
   try {
     const { username, email, password } = req.body;
+    const crypt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hashSync(password, crypt);
     const newUser = new User({ username, email, password });
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
