@@ -13,6 +13,14 @@ module.exports = {
     });
   },
 
+  read: async (req, res) => {
+    const data = await User.findOne({ _id: req.params.id });
+
+    res.status(200).json({
+      success: true,
+      data: data,
+    });
+  },
   //update
   update: async (req, res) => {
     try {
