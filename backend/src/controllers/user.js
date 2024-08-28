@@ -1,4 +1,5 @@
 "use strict";
+const verifyToken = require("../middlewares/verify-token.js");
 const User = require("../models/User.js");
 const bcrypt = require("bcryptjs");
 

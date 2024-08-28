@@ -6,6 +6,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const auhtRoute = require("./src/routes/auth.js");
+const cookieParser = require("cookie-parser");
 
 // envVariables to process.env:
 const PORT = process.env?.PORT || 5000;
@@ -20,6 +21,7 @@ app.use(express.json());
 
 //MWS
 app.use("/api/auth", auhtRoute);
+app.use(cookieParser());
 
 //users
 app.use("/api/users", require("./src/routes/user.js"));
