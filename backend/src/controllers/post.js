@@ -1,15 +1,25 @@
 "use strict";
 const Post = require("../models/Post.js");
 const bcrypt = require("bcryptjs");
+const router = require("express").Router();
 
 module.exports = {
   //list
   list: async (req, res) => {
-    const data = await Post.find();
-    res.status(200).json({
-      success: true,
-      data: data,
-    });
+    try {
+      const query = req.query;
+      console.log(query);
+      const searchFilter = {
+        title: { $regex: query.search, $options: "i" },
+      };
+      const data = await Post.find(query.search ? searchFilter : null);
+      res.status(200).json({
+        success: true,
+        data: data,
+      });
+    } catch (error) {
+      res.status(500).json(error);
+    }
   },
 
   //read
