@@ -1,13 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { URL } from "../url";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSignup = async () => {
     try {
@@ -16,8 +17,14 @@ const SignUp = () => {
         email,
         password,
       });
-      console.log(res.data);
+      setUsername(res.data.username);
+      setEmail(res.data.email);
+      setPassword(res.data.password);
+      setError(false);
+      navigate("/login");
+      // console.log(res.data);
     } catch (error) {
+      setError(true);
       console.log(error);
     }
   };
@@ -61,6 +68,9 @@ const SignUp = () => {
           >
             Sign Up
           </button>
+          {error && (
+            <span className="text-red-500 text-lg">Something went wrong!</span>
+          )}
           <div className="flex justify-center items-center space-x-3">
             <p>Already have account?</p>
             <p className="text-sky-500 hover:text-sky-950">
