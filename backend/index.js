@@ -26,5 +26,8 @@ app.use("/api/users", require("./src/routes/user.js"));
 
 //posts
 app.use("/api/posts", require("./src/routes/post.js"));
+
+//comments
+app.use("/api/comments", require("./src/routes/comment.js"));
 // RUN SERVER:
 app.listen(PORT, () => console.log(`http://${HOST}:${PORT}`));
