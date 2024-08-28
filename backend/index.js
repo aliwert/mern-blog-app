@@ -21,7 +21,10 @@ app.use(express.json());
 //MWS
 app.use("/api/auth", auhtRoute);
 
+//users
 app.use("/api/users", require("./src/routes/user.js"));
 
+//posts
+app.use("/api/posts", require("./src/routes/post.js"));
 // RUN SERVER:
 app.listen(PORT, () => console.log(`http://${HOST}:${PORT}`));
