@@ -9,7 +9,7 @@ const Navbar = () => {
   const showMenu = () => {
     setMenu(!menu);
   };
-  const user = true;
+  const user = false;
 
   return (
     <div className="flex items-center justify-between px-5 md:px- [150px] py-3">

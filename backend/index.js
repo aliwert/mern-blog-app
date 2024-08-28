@@ -7,6 +7,8 @@ const express = require("express");
 const app = express();
 const auhtRoute = require("./src/routes/auth.js");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 // envVariables to process.env:
 const PORT = process.env?.PORT || 5000;
