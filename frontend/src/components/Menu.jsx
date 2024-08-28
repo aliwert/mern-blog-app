@@ -2,7 +2,7 @@ const Menu = () => {
   const user = true;
 
   return (
-    <div className="bg-sky-500 w-[200px] flex flex-col items-start absolute top-10 right-10 rounded-lg p-5 space-y-5">
+    <div className="bg-sky-500 w-[200px] flex flex-col items-start absolute top-10 right-10 md:right-20 rounded-lg p-5 space-y-5">
       {!user && (
         <h3 className="text-white text-lg hover:text-sky-900 cursor-pointer">
           Login

@@ -9,7 +9,7 @@ const Navbar = () => {
   const showMenu = () => {
     setMenu(!menu);
   };
-  const user = false;
+  const user = true;
 
   return (
     <div className="flex items-center justify-between px-5 md:px- [150px] py-3">
@@ -37,7 +37,12 @@ const Navbar = () => {
           </h2>
         )}
         {user ? (
-          <h2 className="text-sky-500">Profile</h2>
+          <div onClick={showMenu}>
+            <p className="cursor-pointer relative  ">
+              <FaBarsStaggered />
+            </p>
+            {menu && <Menu />}
+          </div>
         ) : (
           <h2>
             <Link to="/signup">Sign Up</Link>
@@ -45,10 +50,10 @@ const Navbar = () => {
         )}
       </div>
       <div onClick={showMenu} className="md:hidden text-2xl">
-        <p className="cursor-pointer">
+        <p className="cursor-pointer relative">
           <FaBarsStaggered />
-          {menu ? <Menu /> : null}
         </p>
+        {menu && <Menu />}
       </div>
     </div>
   );
