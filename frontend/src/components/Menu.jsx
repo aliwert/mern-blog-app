@@ -1,5 +1,8 @@
+import { useContext } from "react";
+import { UserContext } from "../context/User";
+
 const Menu = () => {
-  const user = true;
+  const { user } = useContext(UserContext);
 
   return (
     <div className="bg-sky-500 w-[200px] flex flex-col items-start absolute top-10 right-10 md:right-20 rounded-lg p-5 space-y-5">

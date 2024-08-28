@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Menu from "./Menu";
+import { UserContext } from "../context/User";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const showMenu = () => {
     setMenu(!menu);
   };
-  const user = false;
+  const { user } = useContext(UserContext);
+  // const user = true;
 
   return (
     <div className="flex items-center justify-between px-5 md:px- [150px] py-3">
